@@ -18,8 +18,9 @@ public class MonedaServicio implements IMonedaServicio {
     private IMonedaRepositorio repositorio; // Injección de dependencias para poder usar los métodos de JPA
     private ICambioMonedaRepositorio monedaRepositorio;
 
-    public MonedaServicio(IMonedaRepositorio repositorio) {
+    public MonedaServicio(IMonedaRepositorio repositorio, ICambioMonedaRepositorio monedaRepositorio) {
         this.repositorio = repositorio;
+        this.monedaRepositorio = monedaRepositorio;
     }
 
     @Override

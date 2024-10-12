@@ -1,14 +1,36 @@
 package com.apimonedas.apimonedas.controladores;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.apimonedas.apimonedas.core.interfaces.servicios.IMonedaServicio;
+import com.apimonedas.apimonedas.dominio.Moneda;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PostMapping;
 
+
+
+@RestController
+@RequestMapping("/api/monedas")
 public class MonedaControlador {
-    // @Autowired
+    @Autowired // Se usa en contraposición del constructor, aunque también se puede tener un constructor aparte con funciones específicas.
     private IMonedaServicio servicio;
 
-    public MonedaControlador(IMonedaServicio servicio) {
-        this.servicio = servicio;
+    @RequestMapping(value = "/listar", method = RequestMethod.GET)
+    public List<Moneda> listar() {
+        return servicio.listar();
     }
+
+    // @PostMapping("path") También se puede hacer así
+    @RequestMapping(value = "/agregar", method = RequestMethod.POST)
+    public Moneda agregarMoneda(@RequestBody Moneda moneda) {
+        return servicio.agregar(moneda);
+    }
+
+
 }

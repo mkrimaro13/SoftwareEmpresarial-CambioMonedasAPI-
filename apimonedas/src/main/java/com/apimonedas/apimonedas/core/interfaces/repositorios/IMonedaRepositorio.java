@@ -13,7 +13,7 @@ public interface IMonedaRepositorio extends JpaRepository<Moneda, Long> {
     // Esta interfaz se encarga de realizar las consultas a la base de datos, maneja
     // una lista de Monedas y su identificador, ya que está heredando de JPA
 
-    @Query("SELECT m FROM Moneda m WHERE m.nombre LIKE '%' || ?1 '%' ") // el ?1 indica que se requiere el parámetro en
+    @Query("SELECT m FROM Moneda m WHERE m.nombre LIKE '%' || ?1 || '%' ") // el ?1 indica que se requiere el parámetro en
                                                                         // la primera posición
     List<Moneda> buscar(String nombre);
 
