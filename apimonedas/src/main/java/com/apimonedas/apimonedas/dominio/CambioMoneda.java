@@ -32,6 +32,6 @@ public class CambioMoneda {
     @Column(name = "valor")
     private double valor;
 
-    @Column(name="fecha")
+    @Column(name = "fecha")
     private Date fecha;
 }
